@@ -4,22 +4,19 @@
     android:id="@+id/LinearLayout1"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
-    android:orientation = "horizontal">
-    <LinearLayout
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:orientation = "vertical"
-        android:layout_gravity = "center">
+    android:orientation = "vertical"
+    android:background="#ffffb122"
+    android:gravity="center">
 
         <Button
             android:id = "@+id/btn1"
-            android:layout_width = "match_parent"
+            android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:text= "환승 가능 측정"
-            android:textSize= "40dp"
+            android:background = "#ffff2b0e"
+            android:textSize= "40sp"
             android:textStyle = "bold"
-            android:textColor = "#fffff52c"
-            android:background = "#ffff1f15"/>
+            android:textColor = "#fff8ff30"/>
 
         <Button
             android:text=" 택시 요금 측정"
@@ -30,7 +27,5 @@
             android:textStyle = "bold"
             android:background = "#00FF00"
             android:visibility="gone"/>
-
-    </LinearLayout>
 
 </LinearLayout>
