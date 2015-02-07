@@ -1,12 +1,12 @@
 package com.example.user.do_i;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -22,8 +22,9 @@ public class MainActivity extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "환승 아직 안되 ㅠㅠ", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(MainActivity.this, "환승 아직 안되 ㅠㅠ", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, TransferActivity.class);
+                startActivity(intent);
             }
         });
     }
