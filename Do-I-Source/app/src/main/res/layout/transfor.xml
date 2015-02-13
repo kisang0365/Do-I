@@ -14,27 +14,38 @@
         android:layout_height="wrap_content">
         </Chronometer>
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity = "center_horizontal"
         android:layout_marginBottom = "10dp"
         android:text="TextView"
         android:textAppearance = "?android:attr/textAppearanceLarge"/>
+
     <TextView
-        android:id = "@+id/TextView1"
+        android:id = "@+id/TextView2"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:layout_gravity = "center"
         android:text = "환승 정보 표시 화면"
         android:textSize = "20dp"/>
-    
+
+
+    <Button
+        android:id="@+id/button0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="환승하기"
+        android:textAppearance = "?android:attr/textAppearanceLarge"/>
+
+
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="처음부터 다시 재기"
+        android:text="환승 초기화"
         android:textAppearance = "?android:attr/textAppearanceLarge"/>
     
     <Button

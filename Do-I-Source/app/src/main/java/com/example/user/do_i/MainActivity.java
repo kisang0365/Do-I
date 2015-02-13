@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
         btn = (Button)findViewById(R.id.btn1);
         btn.setText("환승 되?");
 
+        //Activity Change
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
