@@ -1,13 +1,15 @@
 package com.example.user.do_i;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -29,16 +31,32 @@ public class TransferActivity extends Activity {
     final int longTrasferTime = 20;
     final int shortTransferTime = 10;
 
-
-
     //If transfer allow text hander
     Handler timeHandler = new Handler(){
         public void handleMessage(Message msg){
             long time = (SystemClock.elapsedRealtime() - ct.getBase()) / 1000;
             if(time<allowTime) {
                 if(time == allowTime/2){
-                    Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    vibe.vibrate(1000);
+//                    Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                    vibe.vibrate(1000);
+                    NotificationManager nm;
+                    nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+                    PendingIntent intent = PendingIntent.getActivity(
+                            TransferActivity.this, 0,
+                            new Intent(TransferActivity.this, TransferActivity.class), 0);
+
+
+                    // Create Notification Object
+                    Notification notification =
+                            new Notification(android.R.drawable.ic_input_add,
+                                    "Do-I", System.currentTimeMillis());
+                    notification.defaults |= Notification.DEFAULT_VIBRATE; //vivrate
+                    notification.flags |=  Notification.FLAG_AUTO_CANCEL;
+                    notification.setLatestEventInfo(TransferActivity.this, "DO-I", "환승까지 "+time+"초가 남았습니다.",intent);
+
+                    nm.notify(1234, notification);
+                    //Toast.makeText(TransferActivity.this, "Notification Registered.", Toast.LENGTH_SHORT).show();
                 }
                 transferAllow.setText("환승 가능!");
                 transferAllow.setTextColor(Color.BLACK);

@@ -18,13 +18,10 @@
         </activity>
         <activity
             android:name=".TransferActivity"
-            android:label="환승 정보">
+            android:label="환승 정보"
+            android:launchMode="singleTask">
+        </activity>
 
-            </activity>
-        <Service
-            android:name="TransferService"
-            android:enabled="true">
-        </Service>
     </application>
 
 </manifest>
