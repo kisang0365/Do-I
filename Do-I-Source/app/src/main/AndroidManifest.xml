@@ -21,6 +21,10 @@
             android:label="환승 정보">
 
             </activity>
+        <Service
+            android:name="TransferService"
+            android:enabled="true">
+        </Service>
     </application>
 
 </manifest>

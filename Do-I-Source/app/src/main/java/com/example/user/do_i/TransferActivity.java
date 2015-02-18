@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -91,11 +92,20 @@ public class TransferActivity extends Activity {
         );
         //back activity
         findViewById(R.id.button2).setOnClickListener(
-                new View.OnClickListener(){
+                new View.OnClickListener() {
 
-                    public void onClick(View v){
+                    public void onClick(View v) {
                         finish();
                     }
                 });
+    }
+
+    //cancle is backgrounding
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch(keyCode){
+            case KeyEvent.KEYCODE_BACK:
+                moveTaskToBack(true);
         }
+        return true;
+    }
 }
