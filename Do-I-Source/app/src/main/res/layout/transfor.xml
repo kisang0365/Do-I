@@ -2,13 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="#ffffb122">
+    <Button
+        android:text="Blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "40dp"
+        android:visibility="invisible"/>
     <Chronometer
         android:id="@+id/chronmeter1"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:textSize="35dp"
+        android:textSize="60dp"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -19,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity = "center_horizontal"
         android:layout_marginBottom = "10dp"
-        android:text="TextView"
+        android:text="환승 가능 표시 화면"
+        android:textSize="25dp"
         android:textAppearance = "?android:attr/textAppearanceLarge"/>
 
     <TextView
@@ -28,31 +35,38 @@
         android:layout_height = "wrap_content"
         android:layout_gravity = "center"
         android:text = "환승 정보 표시 화면"
-        android:textSize = "20dp"/>
+        android:textSize = "25dp"/>
 
+    <Button
+        android:text="Blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "20dp"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/button0"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="환승하기"
+        android:textSize="26dp"
         android:textAppearance = "?android:attr/textAppearanceLarge"/>
-
-
     <Button
         android:id="@+id/button1"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="26dp"
         android:text="환승 초기화"
         android:textAppearance = "?android:attr/textAppearanceLarge"/>
-    
+
     <Button
         android:id = "@+id/button2"
-        android:layout_width = "match_parent"
+        android:layout_width = "300dp"
         android:layout_height = "wrap_content"
         android:layout_gravity="center"
+        android:textSize="26dp"
         android:text= "뒤로가기"
         android:textAppearance = "?android:attr/textAppearanceLarge"/>
 

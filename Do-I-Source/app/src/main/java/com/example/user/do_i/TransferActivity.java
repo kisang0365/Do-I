@@ -1,6 +1,7 @@
 package com.example.user.do_i;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +21,7 @@ import java.util.Calendar;
 public class TransferActivity extends Activity {
 
     Chronometer ct;
-    TextView allowTransfer;
+    TextView transferAllow;
     int number = 3;
     int allowTime;
     final int longTrasferTime = 10;
@@ -31,9 +32,13 @@ public class TransferActivity extends Activity {
     Handler timeHandler = new Handler(){
         public void handleMessage(Message msg){
             long time = (SystemClock.elapsedRealtime() - ct.getBase()) / 1000;
-            if(time<allowTime) allowTransfer.setText("환승 가능!");
+            if(time<allowTime) {
+                transferAllow.setText("환승 가능!");
+                transferAllow.setTextColor(Color.BLACK);
+            }
             else {
-                allowTransfer.setText("환승 불가!");
+                transferAllow.setText("환승 불가!");
+                transferAllow.setTextColor(Color.RED);
                 timeHandler.removeMessages(0);
             }
             timeHandler.sendEmptyMessageDelayed(0, 1000);
@@ -45,12 +50,14 @@ public class TransferActivity extends Activity {
         super.onCreate(savedINstanceState);
         setContentView(R.layout.transfor);
 
-        final TextView text1 = (TextView)findViewById(R.id.TextView1);
-        allowTransfer = (TextView)findViewById(R.id.TextView2);
+        final TextView transferNumber = (TextView)findViewById(R.id.TextView1);
+        transferAllow = (TextView)findViewById(R.id.TextView2);
         ct = (Chronometer) findViewById(R.id.chronmeter1);
         ct.setBase(SystemClock.elapsedRealtime());
-        text1.setText("환승 가능 횟수 : -");
-        allowTransfer.setText("환승 가능 여부 : - ");
+        transferNumber.setText("환승 가능 횟수 : -");
+        transferAllow.setText("환승 가능 여부 : - ");
+        transferNumber.setTextColor(Color.BLACK);
+        transferAllow.setTextColor(Color.BLACK);
 
         //Click do transfer Button
         findViewById(R.id.button0).setOnClickListener(
@@ -66,10 +73,13 @@ public class TransferActivity extends Activity {
                         ct.start();
                         if (number == 0) {
                             ct.stop();
-                            text1.setText("환승 가능 횟수 :  환승 불가");
-                            allowTransfer.setText("환승 불가!");
+                            transferNumber.setText("환승 가능 횟수 :  환승 불가");
+                            transferNumber.setTextColor(Color.RED);
+                            transferAllow.setText("환승 불가!");
+                            transferAllow.setTextColor(Color.RED);
                         } else {
-                            text1.setText("환승 가능 횟수 : " + number);
+                            transferNumber.setText("환승 가능 횟수 : " + number);
+                            transferNumber.setTextColor(Color.BLACK);
                             number--;
                             timeHandler.sendEmptyMessage(0);
 
@@ -82,10 +92,12 @@ public class TransferActivity extends Activity {
                 new Button.OnClickListener(){
                     public void onClick(View v){
                         ct.stop();
-                        allowTransfer.setText("환승 가능 여부 : - ");
+                        transferAllow.setText("환승 가능 여부 : - ");
+                        transferAllow.setTextColor(Color.BLACK);
                         timeHandler.removeMessages(0);
                         number = 3;
-                        text1.setText("환승 가능 횟수 :  -");
+                        transferNumber.setText("환승 가능 횟수 :  -");
+                        transferNumber.setTextColor(Color.BLACK);
                         ct.setBase(SystemClock.elapsedRealtime());
                     }
                 }
@@ -108,4 +120,6 @@ public class TransferActivity extends Activity {
         }
         return true;
     }
+
+
 }
