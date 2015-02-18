@@ -1,11 +1,13 @@
 package com.example.user.do_i;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +26,9 @@ public class TransferActivity extends Activity {
     TextView transferAllow;
     int number = 3;
     int allowTime;
-    final int longTrasferTime = 10;
-    final int shortTransferTime = 5;
+    final int longTrasferTime = 20;
+    final int shortTransferTime = 10;
+
 
 
     //If transfer allow text hander
@@ -33,6 +36,10 @@ public class TransferActivity extends Activity {
         public void handleMessage(Message msg){
             long time = (SystemClock.elapsedRealtime() - ct.getBase()) / 1000;
             if(time<allowTime) {
+                if(time == allowTime/2){
+                    Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibe.vibrate(1000);
+                }
                 transferAllow.setText("환승 가능!");
                 transferAllow.setTextColor(Color.BLACK);
             }
