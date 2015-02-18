@@ -36,9 +36,7 @@ public class TransferActivity extends Activity {
         public void handleMessage(Message msg){
             long time = (SystemClock.elapsedRealtime() - ct.getBase()) / 1000;
             if(time<allowTime) {
-                if(time == allowTime/2){
-//                    Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-//                    vibe.vibrate(1000);
+                if(time == allowTime-5){
                     NotificationManager nm;
                     nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
@@ -49,9 +47,11 @@ public class TransferActivity extends Activity {
 
                     // Create Notification Object
                     Notification notification =
-                            new Notification(android.R.drawable.ic_input_add,
+                            new Notification(R.drawable.ic_launcher,
                                     "Do-I", System.currentTimeMillis());
-                    notification.defaults |= Notification.DEFAULT_VIBRATE; //vivrate
+                    //vivrate
+                    notification.defaults |= Notification.DEFAULT_VIBRATE;
+                    //
                     notification.flags |=  Notification.FLAG_AUTO_CANCEL;
                     notification.setLatestEventInfo(TransferActivity.this, "DO-I", "환승까지 "+time+"초가 남았습니다.",intent);
 
