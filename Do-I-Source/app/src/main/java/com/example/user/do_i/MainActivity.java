@@ -11,21 +11,32 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    Button btn;
+    Button btn1;
+    Button btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn = (Button)findViewById(R.id.btn1);
-        btn.setText("환승 되?");
+        btn1 = (Button)findViewById(R.id.btn1);
+        btn1.setText("환승 해도 되?");
+        btn2 = (Button)findViewById(R.id.btn2);
+        btn2.setText("택시 타도 되?");
 
         //Activity Change
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "환승 아직 안되 ㅠㅠ", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, TransferActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //Activity Change
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, TaxiActivity.class);
+                startActivity(intent1);
             }
         });
     }

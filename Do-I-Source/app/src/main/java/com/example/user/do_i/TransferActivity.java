@@ -28,10 +28,10 @@ public class TransferActivity extends Activity {
     TextView transferAllow;
     int number = 3;
     int allowTime;
-    final int longTrasferTime = 20;
-    final int shortTransferTime = 10;
+    final int longTrasferTime = 30;
+    final int shortTransferTime = 20;
 
-    //If transfer allow text hander
+    //If transfer allow text hander, include notification
     Handler timeHandler = new Handler(){
         public void handleMessage(Message msg){
             long time = (SystemClock.elapsedRealtime() - ct.getBase()) / 1000;

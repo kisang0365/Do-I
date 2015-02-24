@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.do_i" >
     <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -12,7 +14,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,6 +23,16 @@
             android:launchMode="singleTask">
         </activity>
 
+        <activity
+            android:name=".TaxiActivity"
+            android:label="택시 정보">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="test" android:scheme="daummaps://open" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

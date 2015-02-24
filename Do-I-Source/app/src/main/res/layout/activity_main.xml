@@ -1,6 +1,5 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
@@ -14,18 +13,25 @@
             android:layout_height = "wrap_content"
             android:text= "환승 가능 측정"
             android:background = "#ffff2b0e"
-            android:textSize= "40sp"
+            android:textSize= "40dp"
             android:textStyle = "bold"
             android:textColor = "#fff8ff30"/>
+    <Button
+        android:text="Blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "20dp"
+        android:visibility="invisible"/>
 
         <Button
+            android:id = "@+id/btn2"
             android:text=" 택시 요금 측정"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor = "#ffff8675"
+            android:textColor = "#fff8ff30"
             android:textSize = "40dp"
             android:textStyle = "bold"
-            android:background = "#00FF00"
-            android:visibility="gone"/>
+            android:background = "#ffff2b0e"/>
+            //android:visibility="gone"
 
 </LinearLayout>
