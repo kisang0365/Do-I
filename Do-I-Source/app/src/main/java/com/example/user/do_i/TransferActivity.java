@@ -30,13 +30,14 @@ public class TransferActivity extends Activity {
     int allowTime;
     final int longTrasferTime = 30;
     final int shortTransferTime = 20;
+    final int remainTime = 5;
 
     //If transfer allow text hander, include notification
     Handler timeHandler = new Handler(){
         public void handleMessage(Message msg){
             long time = (SystemClock.elapsedRealtime() - ct.getBase()) / 1000;
             if(time<allowTime) {
-                if(time == allowTime-5){
+                if(time == allowTime-remainTime){
                     NotificationManager nm;
                     nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
@@ -51,12 +52,11 @@ public class TransferActivity extends Activity {
                                     "Do-I", System.currentTimeMillis());
                     //vivrate
                     notification.defaults |= Notification.DEFAULT_VIBRATE;
-                    //
+
                     notification.flags |=  Notification.FLAG_AUTO_CANCEL;
-                    notification.setLatestEventInfo(TransferActivity.this, "DO-I", "환승까지 "+time+"초가 남았습니다.",intent);
+                    notification.setLatestEventInfo(TransferActivity.this, "DO-I", "환승까지 "+remainTime+"초가 남았습니다.",intent);
 
                     nm.notify(1234, notification);
-                    //Toast.makeText(TransferActivity.this, "Notification Registered.", Toast.LENGTH_SHORT).show();
                 }
                 transferAllow.setText("환승 가능!");
                 transferAllow.setTextColor(Color.BLACK);

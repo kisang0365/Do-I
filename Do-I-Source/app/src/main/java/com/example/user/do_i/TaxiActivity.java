@@ -38,13 +38,13 @@ public class TaxiActivity extends Activity {
                 String startNX, startNY, startDX, startDY;  //naver x,y
                 String endNX, endNY, endDX, endDY;          //daum x,y
 
-                String query = null;        //search
+                String query = null;        //search query
                 try {
                     query = URLEncoder.encode(start.getText().toString(), "UTF-8");
                 } catch (UnsupportedEncodingException e1) {
                     e1.printStackTrace();
                 }
-
+                //naver StartPoint parssing
                 String queryURL = "http://openapi.naver.com/search?"
                         + "key="+ naverKey
                         + "&query=" + query
@@ -54,11 +54,12 @@ public class TaxiActivity extends Activity {
                 naverObj = new NaverHandleXML(queryURL);
                 naverObj.fetchXML();
                 while (naverObj.parsingComplete) {
-                    status.setText("파싱중...");
+                   //status.setText("파싱중...");
                 }
                 startNX = naverObj.getMapx();
                 startNY = naverObj.getMapy();
 
+                //daum StartPoint parssing
                 queryURL = "https://apis.daum.net/local/geo/transcoord?"
                         +"apikey=" + daumKey
                         +"&x="+startNX + "&y=" + startNY
@@ -69,18 +70,20 @@ public class TaxiActivity extends Activity {
                 daumObj.fetchXML();
 
                 while (daumObj.parsingComplete) {
-                    status.setText("파싱중...");
+                    //status.setText("파싱중...");
                 }
 
                 startDX = daumObj.getMapx();
                 startDY = daumObj.getMapy();
 
+                //end search query
                 try {
                     query = URLEncoder.encode(end.getText().toString(), "UTF-8");
                 } catch (UnsupportedEncodingException e1) {
                     e1.printStackTrace();
                 }
 
+                //naver EndPoint parssing
                 queryURL = "http://openapi.naver.com/search?"
                         + "key=2d565f2b0bb07770f27d65f1291f28f5"
                         + "&query=" + query //여기는 쿼리를 넣으세요(검색어)
@@ -90,11 +93,12 @@ public class TaxiActivity extends Activity {
                 naverObj.setNaverUrl(queryURL);
                 naverObj.fetchXML();
                 while (naverObj.parsingComplete) {
-                    status.setText("파싱중...");
+                    //status.setText("파싱중...");
                 }
                 endNX = naverObj.getMapx();
                 endNY = naverObj.getMapy();
 
+                //daum EndPoint parssing
                 queryURL = "https://apis.daum.net/local/geo/transcoord?"
                         +"apikey=" + daumKey
                         +"&x="+endNX + "&y=" + endNY

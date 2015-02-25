@@ -18,9 +18,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn1 = (Button)findViewById(R.id.btn1);
-        btn1.setText("환승 해도 되?");
+        btn1.setText("환승 해도 돼?");
         btn2 = (Button)findViewById(R.id.btn2);
-        btn2.setText("택시 타도 되?");
+        btn2.setText("택시 타도 ?");
 
         //Activity Change
         btn1.setOnClickListener(new View.OnClickListener() {

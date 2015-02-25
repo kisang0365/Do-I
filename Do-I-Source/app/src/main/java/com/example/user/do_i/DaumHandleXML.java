@@ -16,7 +16,6 @@ public class DaumHandleXML {
     String mapx, mapy = null;
     private XmlPullParserFactory xmlFactoryObject;
     public boolean parsingComplete = true;
-    public volatile boolean parsingihe = true;
 
     public DaumHandleXML(String url){
         this.urlString = url;
@@ -36,7 +35,6 @@ public class DaumHandleXML {
     public void parseXMLAndStoreIt(XmlPullParser myParser) {
 
         int event;
-        String text=null;
         try {
             event = myParser.getEventType();
 
