@@ -32,6 +32,24 @@
             android:textSize = "40dp"
             android:textStyle = "bold"
             android:background = "#ffff2b0e"/>
-            //android:visibility="gone"
+
+    <Button
+        android:text="Blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "20dp"
+        android:visibility="invisible"/>
+/*
+    <Button
+        android:id = "@+id/btn3"
+        android:text=" 지하철 막차 측정"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor = "#fff8ff30"
+        android:textSize = "40dp"
+        android:textStyle = "bold"
+        android:background = "#ffff2b0e"/>
+*/
+
 
 </LinearLayout>

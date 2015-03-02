@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
 
     Button btn1;
     Button btn2;
+    Button btn3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,9 @@ public class MainActivity extends Activity {
         btn1 = (Button)findViewById(R.id.btn1);
         btn1.setText("환승 해도 돼?");
         btn2 = (Button)findViewById(R.id.btn2);
-        btn2.setText("택시 타도 ?");
+        btn2.setText("교통 정보 돼?");
+        btn3 = (Button)findViewById(R.id.btn3);
+        btn3.setText("막차 시간 돼?");
 
         //Activity Change
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +39,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this, TaxiActivity.class);
+                startActivity(intent1);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MainActivity.this, SubwayActivity.class);
                 startActivity(intent1);
             }
         });

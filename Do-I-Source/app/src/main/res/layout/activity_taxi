@@ -62,13 +62,37 @@
             android:textAppearance = "?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
+    <Button
+        android:text="Blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "10dp"
+        android:visibility="invisible"/>
 
     <Button
-        android:id = "@+id/get"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:layout_gravity = "center"
-        android:text = "조회"/>
+        android:id = "@+id/taxi"
+        android:text=" 택시 요금 확인"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize = "30dp"
+        android:textStyle = "bold"/>
+
+    <Button
+        android:text="Blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "3dp"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id = "@+id/fastroad"
+        android:text=" 택시 요금 확인"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize = "30dp"
+        android:textStyle = "bold"/>
 
     <TextView
         android:id="@+id/view"

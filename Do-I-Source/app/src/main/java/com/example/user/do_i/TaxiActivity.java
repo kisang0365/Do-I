@@ -30,9 +30,13 @@ public class TaxiActivity extends Activity {
         final EditText start = (EditText) findViewById(R.id.start);
         final EditText end = (EditText) findViewById(R.id.end);
 
-        Button get = (Button) findViewById(R.id.get);
-        get.setText("조회");
-        get.setOnClickListener(new View.OnClickListener() {
+        Button taxi = (Button) findViewById(R.id.taxi);
+        taxi.setText("택시 요금 측정");
+
+        Button fastroad = (Button) findViewById(R.id.fastroad);
+        fastroad.setText("빠른 길 찾기");
+
+        taxi.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 String startNX, startNY, startDX, startDY;  //naver x,y
@@ -127,5 +131,100 @@ public class TaxiActivity extends Activity {
 
         });
 
+
+        fastroad.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String startNX, startNY, startDX, startDY;  //naver x,y
+                String endNX, endNY, endDX, endDY;          //daum x,y
+
+                String query = null;        //search query
+                try {
+                    query = URLEncoder.encode(start.getText().toString(), "UTF-8");
+                } catch (UnsupportedEncodingException e1) {
+                    e1.printStackTrace();
+                }
+                //naver StartPoint parssing
+                String queryURL = "http://openapi.naver.com/search?"
+                        + "key="+ naverKey
+                        + "&query=" + query
+                        + "&target=local&start=1&display=1";
+
+                TextView status = (TextView) findViewById(R.id.view);
+                naverObj = new NaverHandleXML(queryURL);
+                naverObj.fetchXML();
+                while (naverObj.parsingComplete) {
+                    //status.setText("파싱중...");
+                }
+                startNX = naverObj.getMapx();
+                startNY = naverObj.getMapy();
+
+                //daum StartPoint parssing
+                queryURL = "https://apis.daum.net/local/geo/transcoord?"
+                        +"apikey=" + daumKey
+                        +"&x="+startNX + "&y=" + startNY
+                        +"&fromCoord=KTM&toCoord=WGS84&output=xml";
+
+                daumObj = new DaumHandleXML(queryURL);
+
+                daumObj.fetchXML();
+
+                while (daumObj.parsingComplete) {
+                    //status.setText("파싱중...");
+                }
+
+                startDX = daumObj.getMapx();
+                startDY = daumObj.getMapy();
+
+                //end search query
+                try {
+                    query = URLEncoder.encode(end.getText().toString(), "UTF-8");
+                } catch (UnsupportedEncodingException e1) {
+                    e1.printStackTrace();
+                }
+
+                //naver EndPoint parssing
+                queryURL = "http://openapi.naver.com/search?"
+                        + "key=2d565f2b0bb07770f27d65f1291f28f5"
+                        + "&query=" + query //여기는 쿼리를 넣으세요(검색어)
+                        + "&target=local&start=1&display=1";
+
+
+                naverObj.setNaverUrl(queryURL);
+                naverObj.fetchXML();
+                while (naverObj.parsingComplete) {
+                    //status.setText("파싱중...");
+                }
+                endNX = naverObj.getMapx();
+                endNY = naverObj.getMapy();
+
+                //daum EndPoint parssing
+                queryURL = "https://apis.daum.net/local/geo/transcoord?"
+                        +"apikey=" + daumKey
+                        +"&x="+endNX + "&y=" + endNY
+                        +"&fromCoord=KTM&toCoord=WGS84&output=xml";
+
+                daumObj.setDaumUrl(queryURL);
+
+                daumObj.fetchXML();
+
+                while (daumObj.parsingComplete) {
+                    //status.setText("파싱중...");
+                }
+
+                endDX = daumObj.getMapx();
+                endDY = daumObj.getMapy();
+                status.setText("");
+
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+
+                intent.setData(Uri.parse("daummaps://route?sp="
+                        + startDY + "," + startDX + "&ep=" + endDY + "," + endDX + "&by=PUBLICTRANSIT"));
+
+                startActivity(intent);
+            }
+
+        });
     }
 }

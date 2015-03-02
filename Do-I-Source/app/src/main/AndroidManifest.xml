@@ -33,6 +33,16 @@
                 <data android:host="test" android:scheme="daummaps://open" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SubwayActivity"
+            android:label="택시 정보">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="test" android:scheme="daummaps://open" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
